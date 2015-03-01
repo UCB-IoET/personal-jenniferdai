@@ -151,26 +151,34 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = getIntent();
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             System.out.println("WOOHOOO");
+            String message = "";
 
             Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
             if (rawMsgs != null) {
                 NdefMessage[] msgs = new NdefMessage[rawMsgs.length];
                 for (int i = 0; i < rawMsgs.length; i++) {
                     msgs[i] = (NdefMessage) rawMsgs[i];
-                    System.out.println("MSG "+i+" IS "+msgs[i].toString());
+                    System.out.println("MSG " + i + " IS " + msgs[i].toString());
                     for (NdefRecord r : msgs[i].getRecords()) {
                         // Ignore first three bytes, UTF-8 en
-                        System.out.println("toString:"+r.toString());
-                        System.out.println("asbytes:"+r.getPayload());
-                        System.out.println("payload length:"+r.getPayload().length);
-                        System.out.println("mime: "+r.toMimeType());
-                        System.out.println("tnf: "+r.getTnf());
-                        System.out.println("Mm: "+r.TNF_MIME_MEDIA);
+                        System.out.println("toString:" + r.toString());
+                        System.out.println("asbytes:" + r.getPayload());
+                        System.out.println("payload length:" + r.getPayload().length);
+                        System.out.println("mime: " + r.toMimeType());
+                        System.out.println("tnf: " + r.getTnf());
+                        System.out.println("Mm: " + r.TNF_MIME_MEDIA);
+                        int k = 0;
                         for (byte b : r.getPayload()) {
-                            System.out.println("> "+b);
+                            // Ignores the first three bytes
+                            if( k >= 3) {
+                                System.out.println("> " + b);
+                                message += Character.toString((char) b);
+                            }
+                            k += 1;
                         }
                     }
                 }
+                mNote.setText("You have discovered a NFC Tag!\n" + message);
             }
         } else {
             System.out.println("FFS");
