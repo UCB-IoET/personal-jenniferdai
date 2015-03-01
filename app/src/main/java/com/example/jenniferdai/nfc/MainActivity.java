@@ -197,6 +197,7 @@ public class MainActivity extends ActionBarActivity {
                 msgs = new NdefMessage[rawMsgs.length];
                 for (int i = 0; i < rawMsgs.length; i++) {
                     msgs[i] = (NdefMessage) rawMsgs[i];
+                    Character.toString((char) i);
                 }
             } else {
                 // Unknown tag type
