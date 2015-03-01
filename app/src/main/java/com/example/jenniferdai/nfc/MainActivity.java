@@ -55,11 +55,13 @@ public class MainActivity extends ActionBarActivity {
 
         // Intent filters for reading a note from a tag or exchanging over p2p.
         IntentFilter ndefDetected = new IntentFilter(NfcAdapter.ACTION_NDEF_DISCOVERED);
+
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         // NDEF exchange mode
+        System.out.println("Got new intent");
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(intent.getAction())) {
             NdefMessage[] msgs = getNdefMessages(intent);
             promptForContent(msgs[0]);
@@ -144,17 +146,36 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onResume() {
+        System.out.println("HELLOOOOOO");
         super.onResume();
-//        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
-//            Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
-//            if (rawMsgs != null) {
-//                NdefMessage[] msgs = new NdefMessage[rawMsgs.length];
-//                for (int i = 0; i < rawMsgs.length; i++) {
-//                    msgs[i] = (NdefMessage) rawMsgs[i];
-//                }
-//            }
-//
-//        //process the msgs array
+        Intent intent = getIntent();
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
+            System.out.println("WOOHOOO");
+
+            Parcelable[] rawMsgs = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES);
+            if (rawMsgs != null) {
+                NdefMessage[] msgs = new NdefMessage[rawMsgs.length];
+                for (int i = 0; i < rawMsgs.length; i++) {
+                    msgs[i] = (NdefMessage) rawMsgs[i];
+                    System.out.println("MSG "+i+" IS "+msgs[i].toString());
+                    for (NdefRecord r : msgs[i].getRecords()) {
+                        // Ignore first three bytes, UTF-8 en
+                        System.out.println("toString:"+r.toString());
+                        System.out.println("asbytes:"+r.getPayload());
+                        System.out.println("payload length:"+r.getPayload().length);
+                        System.out.println("mime: "+r.toMimeType());
+                        System.out.println("tnf: "+r.getTnf());
+                        System.out.println("Mm: "+r.TNF_MIME_MEDIA);
+                        for (byte b : r.getPayload()) {
+                            System.out.println("> "+b);
+                        }
+                    }
+                }
+            }
+        } else {
+            System.out.println("FFS");
+        }
+        //process the msgs array
     }
 
 //    @Override
@@ -180,8 +201,7 @@ public class MainActivity extends ActionBarActivity {
             } else {
                 // Unknown tag type
                 byte[] empty = new byte[] {};
-                NdefRecord record =
-                        new NdefRecord(NdefRecord.TNF_UNKNOWN, empty, empty, empty);
+                NdefRecord record = new NdefRecord(NdefRecord.TNF_UNKNOWN, empty, empty, empty);
                 NdefMessage msg = new NdefMessage(new NdefRecord[] {
                         record
                 });
@@ -219,6 +239,6 @@ public class MainActivity extends ActionBarActivity {
 //    }
 //
     private void toast(String text) {
-//        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 }

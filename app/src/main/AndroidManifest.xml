@@ -21,7 +21,9 @@
             </intent-filter>
 
             <!-- Discovers coffee machine sensors.
-             1. Specific barcode
+             1. Length of coffee - how much water to put in
+             2. Length of espresso - how strong you want your coffee
+             Specific barcode
              2. Money left
              3. Types of coffee brewed
              4. Supplies left -->
