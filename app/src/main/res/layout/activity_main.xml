@@ -4,16 +4,32 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-    <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/linearLayout1">
-        <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/write_tag" android:text="@string/write_to_tag"></Button>
-    </LinearLayout>
+   <!-- <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/write_tag"
+        android:layout_gravity="center_horizontal" android:text="@string/write_to_tag"></Button>
     <EditText android:layout_width="fill_parent" android:id="@+id/note" android:layout_height="95dp" android:gravity="top" android:text="@string/default_note_text"></EditText>
+-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="NFC tag text goes here"
+        android:id="@+id/tagText"
+        android:layout_gravity="center_horizontal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Connecting to Firestorm..."
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test ble"
+        android:text="Send to Storm!"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal"
+        android:visibility="gone"
         android:onClick="testBLE"/>
 </LinearLayout>

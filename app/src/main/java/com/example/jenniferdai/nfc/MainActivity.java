@@ -29,7 +29,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -40,8 +42,11 @@ import java.util.UUID;
 public class MainActivity extends ActionBarActivity {
     private static final int REQUEST_ENABLE_BT = 1;
     // Gets default NfcAdapter for the device
-    EditText mNote;
+    //EditText mNote;
+    TextView mNote;
     NfcAdapter mNfcAdapter;
+    TextView connecting;
+    Button send;
     // token that allows the foreign application to use your application's permissions to
     // execute a predefined piece of code.
     PendingIntent mNfcPendingIntent;
@@ -59,7 +64,10 @@ public class MainActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_main);
         // get widgets that you want to interact with
-        mNote = ((EditText) findViewById(R.id.note));
+        mNote = ((TextView) findViewById(R.id.tagText));
+        connecting = ((TextView) findViewById(R.id.textView));
+        send = ((Button) findViewById(R.id.button));
+
         mNote.setText("new text");
 
         // Handle all of our received NFC intents in this activity.
@@ -80,6 +88,8 @@ public class MainActivity extends ActionBarActivity {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
+
+        scanLeDevice(!mScanning);
 
     }
 
@@ -147,11 +157,11 @@ public class MainActivity extends ActionBarActivity {
         return false;
     }
 
-    private void setNoteBody(String body) {
+    /*private void setNoteBody(String body) {
         Editable text = mNote.getText();
         text.clear();
         text.append(body);
-    }
+    }*/
     
     private void promptForContent(final NdefMessage msg) {
         new AlertDialog.Builder(this).setTitle("Replace current content?")
@@ -159,7 +169,7 @@ public class MainActivity extends ActionBarActivity {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         String body = new String(msg.getRecords()[0].getPayload());
-                        setNoteBody(body);
+                        //setNoteBody(body);
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -203,7 +213,7 @@ public class MainActivity extends ActionBarActivity {
                         }
                     }
                 }
-                mNote.setText("You have discovered a NFC Tag!\n" + message);
+                mNote.setText(message);
             }
         } else {
             System.out.println("FFS");
@@ -290,8 +300,9 @@ public class MainActivity extends ActionBarActivity {
         if(mGatt != null) {
             BluetoothGattService s = mGatt.getService(serviceUUID);
             BluetoothGattCharacteristic c = s.getCharacteristic(characteristicUUID);
-            c.setValue("testing");
+            c.setValue(mNote.getText().toString());
             mGatt.writeCharacteristic(c);
+            send.setText("Sending...");
         }
     }
 
@@ -300,13 +311,25 @@ public class MainActivity extends ActionBarActivity {
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             super.onServicesDiscovered(gatt, status);
             System.out.println("discovered services!");
-            writeChar();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    connecting.setVisibility(View.GONE);
+                    send.setVisibility(View.VISIBLE);
+                }
+            });
         }
 
         @Override
         public void onCharacteristicWrite(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
             super.onCharacteristicWrite(gatt, characteristic, status);
             System.out.println("onCharWrite: "+status+", "+characteristic.getStringValue(0));
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    send.setText("Send to Storm!");
+                }
+            });
         }
 
         @Override
@@ -315,7 +338,14 @@ public class MainActivity extends ActionBarActivity {
             if(status == BluetoothGatt.GATT_SUCCESS){
                 gatt.discoverServices();
             } else {
-                System.out.println("gatt connection: "+status);
+                System.out.println("gatt connection: " + status);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        connecting.setVisibility(View.VISIBLE);
+                        send.setVisibility(View.GONE);
+                    }
+                });
             }
         }
     };
@@ -333,6 +363,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void testBLE(View v){
         if(mGatt == null){
+            System.out.println("scanning");
             scanLeDevice(!mScanning);
         } else {
             writeChar();
