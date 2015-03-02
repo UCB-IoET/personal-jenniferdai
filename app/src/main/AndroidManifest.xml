@@ -3,9 +3,10 @@
     package="com.example.jenniferdai.nfc"
     android:versionCode="1"
     android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="10" /> <!-- requires 10 to run NFC -->
+    <uses-sdk android:minSdkVersion="18" /> <!-- requires 10 to run NFC -->
     <uses-permission android:name="android.permission.NFC"></uses-permission>
-
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <application
         android:icon="@mipmap/ic_launcher"
