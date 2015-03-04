@@ -30,6 +30,33 @@
 
 ////////////////// BEGIN FUNCTIONS /////////////////////////////
 
+void toggle_pin_non_volatile(lua_State *L) {
+    printf("%s\n", "nonvolatile");
+    uint32_t base = 0x400E1000;
+    uint32_t *gpio_enable_set = (uint32_t *) (base + 0x04);
+    *gpio_enable_set = 1 << 16;
+    uint32_t *output_enable_set = (uint32_t *) (base + 0x044);
+    *output_enable_set = 1 << 16;
+    uint32_t *output_enable_toggle = (uint32_t *) (base + 0x04C);
+    while (1) {
+    	*output_enable_toggle = 1 << 16;
+        *output_enable_toggle = 0;
+    }
+}
+void toggle_pin(lua_State *L) {
+    printf("%s\n", "volatile fn");
+    uint32_t base = 0x400E1000;
+    uint32_t volatile *gpio_enable_set = (uint32_t volatile *) (base + 0x04);
+    *gpio_enable_set = 1 << 16;
+    uint32_t volatile *output_enable_set = (uint32_t volatile *) (base + 0x044);
+    *output_enable_set = 1 << 16;
+    uint32_t volatile *output_enable_toggle = (uint32_t volatile *) (base + 0x04C);
+    while (1) {
+    	*output_enable_toggle = 1 << 16;
+        *output_enable_toggle = 0;
+    }
+}
+
 int contrib_fourth_root_m1000(lua_State *L) //mandatory signature
 {
     //Get param 1 from top of stack
@@ -178,6 +205,8 @@ const LUA_REG_TYPE contrib_native_map[] =
     { LSTRKEY( "fourth_root"), LFUNCVAL ( contrib_fourth_root_m1000 ) },
     { LSTRKEY( "run_foobar"), LFUNCVAL ( contrib_run_foobar ) },
     { LSTRKEY( "makecounter"), LFUNCVAL ( contrib_makecounter ) },
+    { LSTRKEY( "toggle_pin"), LFUNCVAL ( toggle_pin ) },
+    { LSTRKEY( "toggle_pin_non_volatile"), LFUNCVAL ( toggle_pin_non_volatile) },
 
     SVCD_SYMBOLS
 
