@@ -50,31 +50,16 @@ end)
 irTemp = TEMP:new()
 shellip = "2001:470:66:3f9::2"
 sendsock = storm.net.udpsocket(5409, function() end)
---storm.n.adcife_init()
---a0 = storm.n.adcife_new(storm.io.A0, storm.io.LOW, storm.n.adcife_ADC_REFGND, storm.n.adcife_12BIT)
 cord.new(function()
 	cord.await(storm.os.invokeLater, storm.os.SECOND*5)
 	irTemp:init()
 	while true do
-		temp = irTemp:getIRTemp()
-		--temp = a0:sample()
-		--print(temp)
-		--temp = (temp-2047)*3300
-		--temp = temp/2047
-		-- print("C: ", temp, "F: ", temp*9/5+32)
-		--if temp >= 100 then
-		--	storm.io.set(0, storm.io.D4)
-		--end
-		--print("SVCD: ",SVCD)
-		--print("SVCD Notify: ", SVCD.notify)		
-		SVCD.notify(0x3003, 0x4006, temp)
+		local temp = irTemp:getIRTemp()
+		print(temp)
+		--SVCD.notify(0x3003, 0x4006, temp)
 		storm.net.sendto(sendsock, storm.mp.pack(temp), shellip, 5080)
-		--print("notified") 
 		cord.await(storm.os.invokeLater, storm.os.MILLISECOND*500)
 	end
 end)
-
-
-
 sh.start()
 cord.enter_loop()
