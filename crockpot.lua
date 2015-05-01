@@ -56,7 +56,7 @@ cord.new(function()
 	while true do
 		local temp = irTemp:getIRTemp()
 		print(temp)
-		--SVCD.notify(0x3003, 0x4006, temp)
+		SVCD.notify(0x3003, 0x4006, temp)
 		storm.net.sendto(sendsock, storm.mp.pack(temp), shellip, 5080)
 		cord.await(storm.os.invokeLater, storm.os.MILLISECOND*500)
 	end
