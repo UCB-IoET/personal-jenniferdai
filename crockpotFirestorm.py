@@ -15,9 +15,9 @@ sock = socket.socket(socket.AF_INET6,
     socket.SOCK_DGRAM)
 sock.bind((UDP_IP, UDP_PORT))
 # These are the different timeseries paths that our middleware is publishing to
-ts_paths = ['acc_x','acc_y','acc_z','mag_x','mag_y','mag_z','pir']
+ts_paths = ['temperature']
 
-smap_dict = {'/temp':{'uuid': "6f6b3306-ef7f-11e4-bc83-0001c0158419", 'Metadata': {'SourceName': 'test data'}, 'Properties': {'UnitofTime': 'ms', 'UnitofMeasure': 'count'}}}
+smap_dict = {'/temp':{'uuid': "6f6b3306-ef7f-11e4-bc83-0001c0158419", 'Metadata': {'SourceName': 'Crockpot'}, 'Properties': {'UnitofTime': 'ms', 'UnitofMeasure': 'count'}}}
 
 while True: # serve forever
     data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
