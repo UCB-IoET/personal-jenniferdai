@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/jenniferdai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-de23e35f7c4af9ee469beb220d8e16f4a396b6de.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/classes-b43a7affb3ad55b4d61c604de278dff3a93551de.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-80089fd85f4f2fb35c2eabbe9ac664db83305067.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a60a5e993c98c864010053cb901b7eab25306568">
+        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/gson-2.2.4-61914c906dd31bd59ef9ad44467f3b68cc7c53d1.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/src/main/res/libs/ion-2.1.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0659c4d0a26ab5d857db1440199cef6dd42b4428">
+        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/ion-2.1.3-3061dc72f9185e5080bf99d9fe5b57b902bdc94c.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/classes-f8816eda39adf9f390658f3b667b25bbb5a2ce36.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/src/main/res/libs/androidasync-2.1.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="52aed89a155265a48984ecc06aa8dec12674edad">
+        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/androidasync-2.1.3-bc45c572a1ded9343ce5594646057dff8ad0b27b.jar" />
+    </item>
+
+</items>
