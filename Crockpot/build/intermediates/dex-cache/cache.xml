@@ -2,18 +2,25 @@
 <items version="2" >
 
     <item
-        jar="/Users/jenniferdai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jar="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/exploded-aar/Crockpot/bearcastlib/unspecified/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-de23e35f7c4af9ee469beb220d8e16f4a396b6de.jar" />
+        sha1="7a7dd1c554f9d389d5eca0edc9378245ab6ba23d">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/classes-e9fb88eeda2f0746c6a36d94cb1dbccab6e818bc.jar" />
     </item>
     <item
-        jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jar="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/classes-b43a7affb3ad55b4d61c604de278dff3a93551de.jar" />
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-940bda2de96c0d8071c6da7f100e1d7e66527be9.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/classes-beb4df59dc500e66c4012721ddb2a2ef6f6bbcfd.jar" />
     </item>
     <item
         jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
@@ -30,11 +37,74 @@
         <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/gson-2.2.4-61914c906dd31bd59ef9ad44467f3b68cc7c53d1.jar" />
     </item>
     <item
+        jar="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/exploded-aar/Crockpot/bearcastlib/unspecified/libs/org.eclipse.paho.android.service-1.0.1-javadoc.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="78ea49d603462407e9b4ecec5cc85676e34fbac9">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/org.eclipse.paho.android.service-1.0.1-javadoc-6ae550fbefc221dc5ad050f7219c93d89094200c.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/exploded-aar/Crockpot/bearcastlib/unspecified/libs/org.eclipse.paho.android.service-1.0.1-sources.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c0051b93d76fdbdf4c27ca0fbea8b19e8fed3e22">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/org.eclipse.paho.android.service-1.0.1-sources-553fe2e1fc84bfb3d8d6cbc94161637ddb1f261e.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-de23e35f7c4af9ee469beb220d8e16f4a396b6de.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/classes-b43a7affb3ad55b4d61c604de278dff3a93551de.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/classes-1af7bee0c35241cb2206d6e82dad7b4bdabc5a97.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/exploded-aar/Crockpot/bearcastlib/unspecified/libs/org.eclipse.paho.android.service-1.0.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="314bdd601d420f433924949a2929f0879d4b7ed0">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/org.eclipse.paho.android.service-1.0.1-79317d37f96b8961721a3063c38e6cdc003c3bda.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/exploded-aar/Crockpot/blescanner/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1015844a3f5ced9e546821d3d6e4ba605972c6fe">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/classes-37c9b380bce0a677fe6d2539ccc2a33d98305f16.jar" />
+    </item>
+    <item
         jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/src/main/res/libs/ion-2.1.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="0659c4d0a26ab5d857db1440199cef6dd42b4428">
         <dex dex="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/pre-dexed/debug/ion-2.1.3-3061dc72f9185e5080bf99d9fe5b57b902bdc94c.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-59a87192b9489b36972a5d86d447935ff60939bf.jar" />
+    </item>
+    <item
+        jar="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/exploded-aar/Crockpot/bearcastlib/unspecified/libs/org.eclipse.paho.client.mqttv3-1.0.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b52c872829eb61c28ab989a3c54c77903e83351f">
+        <dex dex="/Users/jenniferdai/AndroidStudioProjects/CrockpotApp/Crockpot/app/build/intermediates/pre-dexed/debug/org.eclipse.paho.client.mqttv3-1.0.1-bb9d3049532183ddb8a3dd990ed9c488ea8252b6.jar" />
     </item>
     <item
         jar="/Users/jenniferdai/Downloads/rice-cooker-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"

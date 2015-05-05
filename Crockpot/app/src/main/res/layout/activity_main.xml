@@ -53,6 +53,15 @@
         android:id="@+id/temp"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Coffee!"
+        android:id="@+id/coffee"
+        android:layout_below="@+id/warm"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/abc_text_size_large_material" />
+
     <!--<TextView-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->

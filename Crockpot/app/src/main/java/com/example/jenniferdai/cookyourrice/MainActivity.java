@@ -29,10 +29,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
-import com.google.gson.JsonObject;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
@@ -66,14 +62,18 @@ import java.util.TimerTask;
 import java.util.UUID;
 import java.util.concurrent.Future;
 
+import proj.tony.com.bearcastutil.BearCastUtil;
+
 
 public class MainActivity extends Activity {
     public static final String PREFS_NAME = "MyPrefsFile";
     private static final String uri = "http://54.215.11.207:38001"; // wtf is this
     Button onoff;
     Button keepWarm;
+    Button coffee;
     TextView displayData;
     TextView cookerStatus;
+
     protected Map<String, String> uuidToKey;
     protected Map<String, String> keyToUuid;
     public static final int smapDelay = 5000;
@@ -91,6 +91,7 @@ public class MainActivity extends Activity {
     private Handler mHandler = new Handler();
     UUID characteristicUUID = UUID.fromString("00004005-0000-1000-8000-00805f9b34fb");
     private String status = "off";
+    BearCastUtil bcastObj;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +99,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         onoff = ((Button) findViewById(R.id.onoff));
         keepWarm = ((Button) findViewById(R.id.warm));
+        coffee = ((Button) findViewById(R.id.coffee));
         displayData = ((TextView) findViewById(R.id.temp));
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
@@ -113,7 +115,7 @@ public class MainActivity extends Activity {
             initMaps();
             sendUpdate();
         }
-
+        bcastObj = new BearCastUtil(this, "temperature");
         // Initializes Bluetooth Adapter
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
@@ -126,9 +128,20 @@ public class MainActivity extends Activity {
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
         //toggleRiceCooker(onoff);
+        // startCoffee(coffee);
         scanLeDevice(!mScanning);
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bcastObj.startBluetoothScan();
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        bcastObj.stopBlueToothScan();
+    }
     private static String inputStreamToString(InputStream inputStream) throws IOException {
         BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
         String line = "";
@@ -151,6 +164,16 @@ public class MainActivity extends Activity {
     }
 
     protected void updateTemperatureText() {
+        String[] dataArray = {"Temperature: " + tempValue};
+        String[] dataTypes = {"string"};
+        String templateName = "singleStringTemplate.html";
+        if (Integer.parseInt(tempValue) > 20) {
+            dataArray[0] = "Temp has reached 20! Your food is done!";
+            bcastObj.deviceCast(dataArray, dataTypes, templateName);
+        }
+        else
+            bcastObj.deviceCast(dataArray, dataTypes, templateName);
+        Log.d("tempValue", tempValue);
         displayData.setText(tempValue+"");
         //displayData.setAllCaps(true);
     }
@@ -216,6 +239,10 @@ public class MainActivity extends Activity {
                                 String retUuid = jsonResponse.getString("uuid");
                                 Log.d("retUuid", retUuid);
                                 String value = readings.getString(1);
+//                                String[] dataArray = {"Temperature: " + value};
+//                                String[] dataTypes = {"string"};
+//                                String templateName = "singleStringTemplate.html";
+//                                bcastObj.deviceCast(dataArray, dataTypes, templateName);
                                 Log.d("value", value);
                                 MainActivity.this.updatePref(value);
                                 runOnUiThread(new Runnable() {
@@ -262,16 +289,31 @@ public class MainActivity extends Activity {
     UUID serviceUUID = UUID.fromString("00003003-0000-1000-8000-00805f9b34fb");
 
     public void toggleRiceCooker(View view) {
-//        if (onoff.getText().equals("Sending..."))
+//        if (coffee.getText().equals("Sending..."))
+//            return;
+//        BluetoothGattCharacteristic writeChar = mGatt.getService(serviceUUID).getCharacteristic(characteristicUUID);
+//        if (status.equals("off"))
+//            //writeChar.setValue(new byte[]{0x0100});
+//        //else
+//            //writeChar.setValue(new byte[]{0x00});
+//        coffee.setText("Sending...");
+//        mGatt.writeCharacteristic(writeChar);
+    }
+
+    public void startCoffee(View view) {
+        //if (onoff.getText().equals("Sending..."))
 //            return;
 //        BluetoothGattCharacteristic writeChar = mGatt.getService(serviceUUID).getCharacteristic(characteristicUUID);
 //        if (status.equals("off"))
 //            writeChar.setValue(new byte[]{0x01});
+        // send 4 digit byte arrays to EF:AD:81:B7:EB:8D
+        // temp, set point, on/off
 //        else
 //            writeChar.setValue(new byte[]{0x00});
 //        onoff.setText("Sending...");
 //        mGatt.writeCharacteristic(writeChar);
     }
+
 
     BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
         @Override
